@@ -1,5 +1,3 @@
-import { Analytics } from "@vercel/analytics/react";
-
 // Vercel Analytics configuration
 export const analytics = {
 	// Track page views automatically
@@ -7,11 +5,20 @@ export const analytics = {
 };
 
 // Custom event tracking
-export function trackEvent(name: string, properties?: Record<string, any>) {
+export function trackEvent(name: string, properties?: Record<string, unknown>) {
 	if (typeof window !== "undefined" && analytics.enabled) {
-		// Use Vercel Analytics track function
-		if (window.va) {
-			window.va("track", name, properties);
+		// Use Vercel Analytics track function if available
+		const va = (
+			window as unknown as {
+				va?: (
+					type: string,
+					name: string,
+					props?: Record<string, unknown>
+				) => void;
+			}
+		).va;
+		if (typeof va === "function") {
+			va("track", name, properties);
 		}
 	}
 }
@@ -47,13 +54,13 @@ export const trackingEvents = {
 // Page view tracking (automatic with Vercel Analytics)
 export function trackPageView(url: string) {
 	if (typeof window !== "undefined" && analytics.enabled) {
-		// Vercel Analytics automatically tracks page views
-		// This function is here for custom implementations if needed
+		// Hook for custom page view tracking
+		void url;
 	}
 }
 
 // Error tracking
-export function trackError(error: Error, context?: Record<string, any>) {
+export function trackError(error: Error, context?: Record<string, unknown>) {
 	if (typeof window !== "undefined" && analytics.enabled) {
 		trackEvent("Error Occurred", {
 			error: error.message,
@@ -75,12 +82,5 @@ export function trackPerformance(
 			value,
 			unit,
 		});
-	}
-}
-
-// Declare global type for Vercel Analytics
-declare global {
-	interface Window {
-		va: any;
 	}
 }

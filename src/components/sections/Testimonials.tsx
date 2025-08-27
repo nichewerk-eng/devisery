@@ -21,7 +21,7 @@ const testimonials = [
 		id: 3,
 		name: "Emily Rodriguez",
 		content:
-			"The team at Devisery doesn't just deliver solutions; they deliver results. Our revenue increased by 250% after implementing their recommended strategies.",
+			"The team at Devisery doesn\'t just deliver solutions; they deliver results. Our revenue increased by 250% after implementing their recommended strategies.",
 		rating: 5,
 		avatar: "/avatars/emily.jpg",
 	},
@@ -54,7 +54,9 @@ export default function Testimonials() {
 								</div>
 
 								<blockquote className="text-card-foreground">
-									<p className="text-sm leading-6">"{testimonial.content}"</p>
+									<p className="text-sm leading-6">
+										&quot;{testimonial.content}&quot;
+									</p>
 								</blockquote>
 
 								<figcaption className="mt-6 flex items-center gap-x-4">

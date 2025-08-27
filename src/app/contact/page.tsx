@@ -1,17 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Script from "next/script";
-import Link from "next/link";
 import { ContactForm } from "@/components/sections/ContactForm";
-import {
-	Shield,
-	Users,
-	Award,
-	Phone,
-	Mail,
-	CalendarClock,
-	MapPin,
-} from "lucide-react";
+import { Shield, Users, Award, Mail, MapPin } from "lucide-react";
 
 export const metadata: Metadata = {
 	title: "Contact Us | Devisery",
