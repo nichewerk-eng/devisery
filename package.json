@@ -1,26 +1,44 @@
 {
-  "name": "devisery",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.13"
-  },
-  "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.13"
-  }
+	"name": "devisery",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "open http://localhost:3000 && next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@fontsource/noto-sans": "^5.1.0",
+		"@fontsource/roboto": "^5.1.0",
+		"@fontsource/rubik": "^5.1.0",
+		"@heroicons/react": "^2.1.5",
+		"@sendgrid/mail": "^8.1.3",
+		"@vercel/analytics": "^1.3.1",
+		"autoprefixer": "^10.4.20",
+		"clsx": "^2.1.1",
+		"next": "^14.2.32",
+		"postmark": "^4.0.5",
+		"react": "^18",
+		"react-countup": "^6.5.3",
+		"react-dom": "^18",
+		"react-responsive-carousel": "^3.2.23",
+		"recharts": "^3.1.2",
+		"tailwind-merge": "^3.3.1",
+		"tailwindcss-animate": "^1.0.7"
+	},
+	"devDependencies": {
+		"@radix-ui/react-label": "^2.1.7",
+		"@radix-ui/react-select": "^2.2.6",
+		"@types/node": "^20",
+		"@types/react": "^18",
+		"@types/react-dom": "^18",
+		"eslint": "^8",
+		"eslint-config-next": "14.2.13",
+		"open": "^10.1.0",
+		"postcss": "^8.4.47",
+		"prettier": "^3.3.3",
+		"tailwindcss": "^3.4.12",
+		"typescript": "^5"
+	}
 }

@@ -1,0 +1,108 @@
+{
+	"services": [
+		{
+			"id": "consulting",
+			"title": "Business Consulting",
+			"description": "Strategic consulting services to help optimize your business operations and drive sustainable growth.",
+			"longDescription": "Our experienced consultants work closely with your team to identify opportunities for improvement, streamline processes, and develop strategies that align with your business goals. We provide actionable insights and practical solutions that deliver measurable results.",
+			"icon": "💼",
+			"features": [
+				"Business Strategy Development",
+				"Process Optimization",
+				"Digital Transformation",
+				"Market Analysis",
+				"Competitive Intelligence",
+				"Performance Metrics & KPIs"
+			],
+			"benefits": [
+				"Increased operational efficiency",
+				"Better decision-making processes",
+				"Reduced costs and improved ROI",
+				"Enhanced competitive advantage"
+			],
+			"pricing": {
+				"starting": 2500,
+				"currency": "USD",
+				"unit": "project"
+			}
+		},
+		{
+			"id": "development",
+			"title": "Development Services",
+			"description": "Custom software development solutions tailored to your specific business needs and requirements.",
+			"longDescription": "Our development team creates robust, scalable, and user-friendly applications that help your business operate more efficiently. From web applications to mobile apps and API integrations, we deliver high-quality solutions using modern technologies and best practices.",
+			"icon": "💻",
+			"features": [
+				"Web Application Development",
+				"Mobile App Development (iOS & Android)",
+				"API Development & Integration",
+				"Database Design & Optimization",
+				"Cloud Infrastructure Setup",
+				"Maintenance & Support"
+			],
+			"benefits": [
+				"Custom solutions built for your needs",
+				"Scalable architecture for future growth",
+				"Modern, user-friendly interfaces",
+				"Ongoing technical support"
+			],
+			"pricing": {
+				"starting": 5000,
+				"currency": "USD",
+				"unit": "project"
+			}
+		},
+		{
+			"id": "design",
+			"title": "Design Services",
+			"description": "Creative design services that enhance user experience and strengthen your brand identity.",
+			"longDescription": "Our design team combines creativity with strategic thinking to create compelling visual experiences that resonate with your target audience. We focus on user-centered design principles to ensure your brand stands out and delivers exceptional user experiences.",
+			"icon": "🎨",
+			"features": [
+				"UI/UX Design",
+				"Brand Identity Development",
+				"Website Design",
+				"Marketing Materials",
+				"Logo & Visual Identity",
+				"User Research & Testing"
+			],
+			"benefits": [
+				"Professional, modern designs",
+				"Improved user engagement",
+				"Stronger brand recognition",
+				"Higher conversion rates"
+			],
+			"pricing": {
+				"starting": 1500,
+				"currency": "USD",
+				"unit": "project"
+			}
+		},
+		{
+			"id": "digital-marketing",
+			"title": "Digital Marketing",
+			"description": "Comprehensive digital marketing strategies to increase your online presence and drive growth.",
+			"longDescription": "Our digital marketing experts help you reach your target audience through strategic campaigns across multiple channels. We focus on data-driven approaches that deliver measurable results and sustainable growth for your business.",
+			"icon": "📈",
+			"features": [
+				"SEO Optimization",
+				"Content Marketing",
+				"Social Media Management",
+				"PPC Advertising",
+				"Email Marketing",
+				"Analytics & Reporting"
+			],
+			"benefits": [
+				"Increased online visibility",
+				"Higher quality leads",
+				"Better customer engagement",
+				"Measurable ROI"
+			],
+			"pricing": {
+				"starting": 1000,
+				"currency": "USD",
+				"unit": "month"
+			}
+		}
+	]
+}

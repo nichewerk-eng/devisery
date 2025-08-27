@@ -1,0 +1,123 @@
+{
+	"testimonials": [
+		{
+			"id": 1,
+			"name": "Sarah Johnson",
+			"role": "CEO",
+			"company": "TechCorp Solutions",
+			"content": "Devisery transformed our entire digital infrastructure. Their expertise and dedication to excellence is unmatched. We saw a 300% increase in efficiency within the first quarter of working with them.",
+			"rating": 5,
+			"avatar": "/avatars/sarah-johnson.jpg",
+			"featured": true,
+			"date": "2024-02-15",
+			"industry": "Technology",
+			"companySize": "50-100 employees"
+		},
+		{
+			"id": 2,
+			"name": "Michael Chen",
+			"role": "CTO",
+			"company": "InnovateLab",
+			"content": "Working with Devisery was a game-changer for our startup. They delivered exactly what we needed, on time and within budget. Their technical expertise and communication throughout the project was outstanding.",
+			"rating": 5,
+			"avatar": "/avatars/michael-chen.jpg",
+			"featured": true,
+			"date": "2024-01-28",
+			"industry": "Software",
+			"companySize": "10-50 employees"
+		},
+		{
+			"id": 3,
+			"name": "Emily Rodriguez",
+			"role": "Founder",
+			"company": "GrowthCo",
+			"content": "The team at Devisery doesn't just deliver solutions; they deliver results. Our revenue increased by 250% after implementing their recommended strategies and digital transformation plan.",
+			"rating": 5,
+			"avatar": "/avatars/emily-rodriguez.jpg",
+			"featured": true,
+			"date": "2024-01-10",
+			"industry": "E-commerce",
+			"companySize": "25-50 employees"
+		},
+		{
+			"id": 4,
+			"name": "David Thompson",
+			"role": "VP of Operations",
+			"company": "ManufacturingPlus",
+			"content": "Devisery helped us modernize our operations and implement new systems that saved us both time and money. Their consulting approach was thorough and their recommendations were spot-on.",
+			"rating": 5,
+			"avatar": "/avatars/david-thompson.jpg",
+			"featured": false,
+			"date": "2023-12-20",
+			"industry": "Manufacturing",
+			"companySize": "100-500 employees"
+		},
+		{
+			"id": 5,
+			"name": "Lisa Wang",
+			"role": "Marketing Director",
+			"company": "HealthTech Solutions",
+			"content": "The design work Devisery did for our brand was exceptional. They understood our vision and created something that truly represents our company values. Our customer engagement has improved significantly.",
+			"rating": 5,
+			"avatar": "/avatars/lisa-wang.jpg",
+			"featured": false,
+			"date": "2023-11-15",
+			"industry": "Healthcare",
+			"companySize": "75-100 employees"
+		},
+		{
+			"id": 6,
+			"name": "James Patterson",
+			"role": "Owner",
+			"company": "Local Business Network",
+			"content": "As a small business owner, I was impressed by how Devisery took the time to understand our unique needs. They provided solutions that were both effective and affordable. Highly recommended!",
+			"rating": 5,
+			"avatar": "/avatars/james-patterson.jpg",
+			"featured": false,
+			"date": "2023-10-30",
+			"industry": "Professional Services",
+			"companySize": "5-10 employees"
+		},
+		{
+			"id": 7,
+			"name": "Rachel Green",
+			"role": "Head of Digital",
+			"company": "RetailMax",
+			"content": "Devisery's digital marketing strategies helped us reach new customers and increase our online sales by 180%. Their data-driven approach and continuous optimization made all the difference.",
+			"rating": 5,
+			"avatar": "/avatars/rachel-green.jpg",
+			"featured": false,
+			"date": "2023-09-12",
+			"industry": "Retail",
+			"companySize": "200-500 employees"
+		},
+		{
+			"id": 8,
+			"name": "Robert Kim",
+			"role": "President",
+			"company": "Financial Advisors Inc",
+			"content": "The mobile app Devisery developed for our clients has been a huge success. It's user-friendly, secure, and has helped us provide better service to our customers. Excellent work!",
+			"rating": 5,
+			"avatar": "/avatars/robert-kim.jpg",
+			"featured": false,
+			"date": "2023-08-25",
+			"industry": "Financial Services",
+			"companySize": "30-50 employees"
+		}
+	],
+	"stats": {
+		"totalTestimonials": 8,
+		"averageRating": 5.0,
+		"featuredCount": 3,
+		"industries": [
+			"Technology",
+			"Software",
+			"E-commerce",
+			"Manufacturing",
+			"Healthcare",
+			"Professional Services",
+			"Retail",
+			"Financial Services"
+		]
+	}
+}
