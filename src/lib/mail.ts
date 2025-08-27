@@ -1,5 +1,5 @@
 // Email service configuration for SendGrid and Postmark
-import sgMail from "@sendgrid/mail";
+import sgMail, { type MailDataRequired } from "@sendgrid/mail";
 
 // Configure SendGrid
 if (process.env.SENDGRID_API_KEY) {
@@ -26,16 +26,24 @@ export interface ContactFormData {
 // SendGrid email service
 export async function sendEmailWithSendGrid(emailData: EmailData) {
 	try {
-		const msg = {
+		type SGContent = { type: "text/plain" | "text/html"; value: string };
+		const parts: SGContent[] = [];
+		if (emailData.html)
+			parts.push({ type: "text/html", value: emailData.html });
+		if (emailData.text)
+			parts.push({ type: "text/plain", value: emailData.text });
+		if (parts.length === 0)
+			parts.push({ type: "text/plain", value: "(no content)" });
+		const [first, ...rest] = parts;
+		const content = [first, ...rest] as [SGContent, ...SGContent[]];
+
+		await sgMail.send({
 			to: emailData.to,
 			from: emailData.from || process.env.FROM_EMAIL || "hello@devisery.com",
 			subject: emailData.subject,
-			text: emailData.text,
-			html: emailData.html,
+			content: content as unknown as MailDataRequired["content"],
 			replyTo: emailData.replyTo,
-		};
-
-		await sgMail.send(msg);
+		} as unknown as MailDataRequired);
 		return { success: true, message: "Email sent successfully" };
 	} catch (error) {
 		console.error("SendGrid error:", error);
@@ -157,7 +165,6 @@ export function generateAutoReplyEmail(data: ContactFormData): EmailData {
         <p style="margin: 0; color: #1e40af; font-size: 14px;">
           <strong>Devisery</strong><br>
           Email: hello@devisery.com<br>
-          Phone: (123) 456-7890<br>
           Website: https://devisery.com
         </p>
       </div>
@@ -183,7 +190,6 @@ The Devisery Team
 ---
 Devisery
 Email: hello@devisery.com
-Phone: (123) 456-7890
 Website: https://devisery.com
   `;
 
@@ -197,7 +203,12 @@ Website: https://devisery.com
 
 // Main function to send contact form emails
 export async function sendContactFormEmails(data: ContactFormData) {
-	const results = [];
+	const results = [] as Array<{
+		type: string;
+		success: boolean;
+		message?: string;
+		error?: string;
+	}>;
 
 	// Send notification email to company
 	const notificationEmail = generateContactFormEmail(data);
