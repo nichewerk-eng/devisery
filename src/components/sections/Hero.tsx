@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Users, TrendingUp, Award, Download } from "lucide-react";
+import { ArrowRight, Users, TrendingUp, Award } from "lucide-react";
 import { Button } from "../ui/Button";
 import { ContactForm } from "./ContactForm";
 import Image from "next/image";
@@ -56,15 +56,6 @@ export function HeroSection() {
 								>
 									Book Free Consultation
 									<ArrowRight className="w-5 h-5 ml-2" />
-								</Button>
-
-								<Button
-									variant="outline"
-									size="lg"
-									className="border-2 border-white/30 hover:border-yellow-400 text-white hover:text-yellow-400 bg-white/10 hover:bg-white/20 backdrop-blur-sm px-8 py-4 text-lg transition-all duration-300"
-								>
-									<Download className="w-5 h-5 mr-2" />
-									Free Business Guide
 								</Button>
 							</div>
 
