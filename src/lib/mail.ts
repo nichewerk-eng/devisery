@@ -1,10 +1,4 @@
-// Email service configuration for SendGrid and Postmark
-import sgMail, { type MailDataRequired } from "@sendgrid/mail";
-
-// Configure SendGrid
-if (process.env.SENDGRID_API_KEY) {
-	sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-}
+// Email service configuration for Postmark
 
 export interface EmailData {
 	to: string;
@@ -23,35 +17,7 @@ export interface ContactFormData {
 	phone?: string;
 }
 
-// SendGrid email service
-export async function sendEmailWithSendGrid(emailData: EmailData) {
-	try {
-		type SGContent = { type: "text/plain" | "text/html"; value: string };
-		const parts: SGContent[] = [];
-		if (emailData.html)
-			parts.push({ type: "text/html", value: emailData.html });
-		if (emailData.text)
-			parts.push({ type: "text/plain", value: emailData.text });
-		if (parts.length === 0)
-			parts.push({ type: "text/plain", value: "(no content)" });
-		const [first, ...rest] = parts;
-		const content = [first, ...rest] as [SGContent, ...SGContent[]];
-
-		await sgMail.send({
-			to: emailData.to,
-			from: emailData.from || process.env.FROM_EMAIL || "hello@devisery.com",
-			subject: emailData.subject,
-			content: content as unknown as MailDataRequired["content"],
-			replyTo: emailData.replyTo,
-		} as unknown as MailDataRequired);
-		return { success: true, message: "Email sent successfully" };
-	} catch (error) {
-		console.error("SendGrid error:", error);
-		return { success: false, error: "Failed to send email" };
-	}
-}
-
-// Postmark email service (alternative)
+// Postmark email service
 export async function sendEmailWithPostmark(emailData: EmailData) {
 	try {
 		const response = await fetch("https://api.postmarkapp.com/email", {
@@ -68,6 +34,7 @@ export async function sendEmailWithPostmark(emailData: EmailData) {
 				TextBody: emailData.text,
 				HtmlBody: emailData.html,
 				ReplyTo: emailData.replyTo,
+				MessageStream: "outbound",
 			}),
 		});
 
@@ -201,7 +168,7 @@ Website: https://devisery.com
 	};
 }
 
-// Main function to send contact form emails
+// Main function to send contact form emails (Postmark only)
 export async function sendContactFormEmails(data: ContactFormData) {
 	const results = [] as Array<{
 		type: string;
@@ -212,12 +179,12 @@ export async function sendContactFormEmails(data: ContactFormData) {
 
 	// Send notification email to company
 	const notificationEmail = generateContactFormEmail(data);
-	const notificationResult = await sendEmailWithSendGrid(notificationEmail);
+	const notificationResult = await sendEmailWithPostmark(notificationEmail);
 	results.push({ type: "notification", ...notificationResult });
 
 	// Send auto-reply to customer
 	const autoReplyEmail = generateAutoReplyEmail(data);
-	const autoReplyResult = await sendEmailWithSendGrid(autoReplyEmail);
+	const autoReplyResult = await sendEmailWithPostmark(autoReplyEmail);
 	results.push({ type: "auto-reply", ...autoReplyResult });
 
 	return results;

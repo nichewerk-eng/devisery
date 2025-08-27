@@ -23,11 +23,54 @@ export function ContactForm() {
 		challenge: "",
 		industry: "",
 	});
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [status, setStatus] = useState<null | { ok: boolean; message: string }>(
+		null
+	);
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		// Handle form submission
-		console.log("Form submitted:", formData);
+		setStatus(null);
+		setIsSubmitting(true);
+		try {
+			const res = await fetch("/api/contact", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({
+					name: formData.name,
+					email: formData.email,
+					phone: formData.phone || undefined,
+					company: formData.company || undefined,
+					service: formData.industry || undefined,
+					message: formData.challenge || "(no message)",
+				}),
+			});
+			if (!res.ok) {
+				const data = await res
+					.json()
+					.catch(() => ({ message: "Failed to send." }));
+				throw new Error(data.message || "Failed to send.");
+			}
+			setStatus({
+				ok: true,
+				message: "Thanks! We\'ll get back within 24 hours.",
+			});
+			setFormData({
+				name: "",
+				email: "",
+				phone: "",
+				company: "",
+				challenge: "",
+				industry: "",
+			});
+		} catch (err: unknown) {
+			setStatus({
+				ok: false,
+				message: err instanceof Error ? err.message : "Something went wrong.",
+			});
+		} finally {
+			setIsSubmitting(false);
+		}
 	};
 
 	return (
@@ -94,10 +137,29 @@ export function ContactForm() {
 
 				<div>
 					<Label
+						htmlFor="company"
+						className="text-sm font-medium text-gray-700"
+					>
+						Company (optional)
+					</Label>
+					<Input
+						id="company"
+						type="text"
+						placeholder="Company Inc."
+						value={formData.company}
+						onChange={(e) =>
+							setFormData({ ...formData, company: e.target.value })
+						}
+						className="mt-1"
+					/>
+				</div>
+
+				<div>
+					<Label
 						htmlFor="industry"
 						className="text-sm font-medium text-gray-700"
 					>
-						Industry
+						Service of interest
 					</Label>
 					<Select
 						onValueChange={(value) =>
@@ -105,16 +167,15 @@ export function ContactForm() {
 						}
 					>
 						<SelectTrigger className="mt-1">
-							<SelectValue placeholder="Select your industry" />
+							<SelectValue placeholder="Select a service" />
 						</SelectTrigger>
 						<SelectContent>
-							<SelectItem value="retail">Retail</SelectItem>
-							<SelectItem value="healthcare">Healthcare</SelectItem>
-							<SelectItem value="technology">Technology</SelectItem>
-							<SelectItem value="manufacturing">Manufacturing</SelectItem>
-							<SelectItem value="services">Professional Services</SelectItem>
-							<SelectItem value="restaurant">Restaurant/Food</SelectItem>
-							<SelectItem value="other">Other</SelectItem>
+							<SelectItem value="growth">Business Growth</SelectItem>
+							<SelectItem value="performance">
+								Performance Optimization
+							</SelectItem>
+							<SelectItem value="advisory">Expert Advisory</SelectItem>
+							<SelectItem value="finance">Financial Planning</SelectItem>
 						</SelectContent>
 					</Select>
 				</div>
@@ -139,12 +200,21 @@ export function ContactForm() {
 
 				<Button
 					type="submit"
-					className="w-full bg-[#3095d2] hover:bg-[#324c82] text-white font-semibold py-3 text-base shadow-lg hover:shadow-xl transition-all duration-300"
+					className="w-full bg-[#3095d2] hover:bg-[#324c82] text-white font-semibold py-3 text-base shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-60"
+					disabled={isSubmitting}
 				>
 					<Calendar className="w-4 h-4 mr-2" />
-					Book My FREE Consultation
+					{isSubmitting ? "Sending..." : "Book My FREE Consultation"}
 				</Button>
 			</form>
+
+			{status && (
+				<p
+					className={`mt-4 text-sm ${status.ok ? "text-green-600" : "text-red-600"}`}
+				>
+					{status.message}
+				</p>
+			)}
 
 			{/* Trust Signals */}
 			<div className="mt-4 pt-4 border-t border-gray-200">
