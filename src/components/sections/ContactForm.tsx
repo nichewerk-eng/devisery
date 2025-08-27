@@ -41,7 +41,7 @@ export function ContactForm() {
 					email: formData.email,
 					phone: formData.phone || undefined,
 					company: formData.company || undefined,
-					service: formData.industry || undefined,
+					businessType: formData.industry || undefined,
 					message: formData.challenge || "(no message)",
 				}),
 			});
@@ -159,7 +159,7 @@ export function ContactForm() {
 						htmlFor="industry"
 						className="text-sm font-medium text-gray-700"
 					>
-						Service of interest
+						Type of business
 					</Label>
 					<Select
 						onValueChange={(value) =>
@@ -167,15 +167,16 @@ export function ContactForm() {
 						}
 					>
 						<SelectTrigger className="mt-1">
-							<SelectValue placeholder="Select a service" />
+							<SelectValue placeholder="Select a business type" />
 						</SelectTrigger>
 						<SelectContent>
-							<SelectItem value="growth">Business Growth</SelectItem>
-							<SelectItem value="performance">
-								Performance Optimization
-							</SelectItem>
-							<SelectItem value="advisory">Expert Advisory</SelectItem>
-							<SelectItem value="finance">Financial Planning</SelectItem>
+							<SelectItem value="retail">Retail</SelectItem>
+							<SelectItem value="healthcare">Healthcare</SelectItem>
+							<SelectItem value="technology">Technology</SelectItem>
+							<SelectItem value="manufacturing">Manufacturing</SelectItem>
+							<SelectItem value="services">Professional Services</SelectItem>
+							<SelectItem value="restaurant">Restaurant / Food</SelectItem>
+							<SelectItem value="other">Other</SelectItem>
 						</SelectContent>
 					</Select>
 				</div>
