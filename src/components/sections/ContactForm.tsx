@@ -223,6 +223,10 @@ export function ContactForm() {
 						onSuccess={setCaptchaToken}
 						onError={() => setCaptchaToken("")}
 						onExpire={() => setCaptchaToken("")}
+						options={{
+							theme: "light",
+							size: "normal",
+						}}
 					/>
 				</div>
 
