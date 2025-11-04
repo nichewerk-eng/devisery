@@ -13,6 +13,7 @@ import {
 } from "../ui/select";
 import { Mail, Calendar, Shield } from "lucide-react";
 import { useState } from "react";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 export function ContactForm() {
 	const [formData, setFormData] = useState({
@@ -27,10 +28,21 @@ export function ContactForm() {
 	const [status, setStatus] = useState<null | { ok: boolean; message: string }>(
 		null
 	);
+	const [captchaToken, setCaptchaToken] = useState<string>("");
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		setStatus(null);
+
+		// Validate CAPTCHA
+		if (!captchaToken) {
+			setStatus({
+				ok: false,
+				message: "Please complete the CAPTCHA verification.",
+			});
+			return;
+		}
+
 		setIsSubmitting(true);
 		try {
 			const res = await fetch("/api/contact", {
@@ -43,6 +55,7 @@ export function ContactForm() {
 					company: formData.company || undefined,
 					businessType: formData.industry || undefined,
 					message: formData.challenge || "(no message)",
+					captchaToken,
 				}),
 			});
 			if (!res.ok) {
@@ -63,6 +76,7 @@ export function ContactForm() {
 				challenge: "",
 				industry: "",
 			});
+			setCaptchaToken(""); // Reset captcha
 		} catch (err: unknown) {
 			setStatus({
 				ok: false,
@@ -199,10 +213,23 @@ export function ContactForm() {
 					/>
 				</div>
 
+				{/* Cloudflare Turnstile CAPTCHA */}
+				<div className="flex justify-center">
+					<Turnstile
+						siteKey={
+							process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY ||
+							"1x00000000000000000000AA"
+						}
+						onSuccess={setCaptchaToken}
+						onError={() => setCaptchaToken("")}
+						onExpire={() => setCaptchaToken("")}
+					/>
+				</div>
+
 				<Button
 					type="submit"
 					className="w-full bg-[#3095d2] hover:bg-[#324c82] text-white font-semibold py-3 text-base shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-60"
-					disabled={isSubmitting}
+					disabled={isSubmitting || !captchaToken}
 				>
 					<Calendar className="w-4 h-4 mr-2" />
 					{isSubmitting ? "Sending..." : "Book My FREE Consultation"}

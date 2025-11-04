@@ -3,7 +3,40 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
 	try {
 		const body = await request.json();
-		const { name, email, company, phone, service, message } = body;
+		const { name, email, company, phone, service, message, captchaToken } =
+			body;
+
+		// Validate CAPTCHA token
+		if (!captchaToken) {
+			return NextResponse.json(
+				{ message: "CAPTCHA verification is required" },
+				{ status: 400 }
+			);
+		}
+
+		// Verify Cloudflare Turnstile token
+		const turnstileResponse = await fetch(
+			"https://challenges.cloudflare.com/turnstile/v0/siteverify",
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					secret: process.env.CLOUDFLARE_TURNSTILE_SECRET_KEY,
+					response: captchaToken,
+				}),
+			}
+		);
+
+		const turnstileData = await turnstileResponse.json();
+
+		if (!turnstileData.success) {
+			return NextResponse.json(
+				{ message: "CAPTCHA verification failed. Please try again." },
+				{ status: 400 }
+			);
+		}
 
 		// Validate required fields
 		if (!name || !email || !message) {
