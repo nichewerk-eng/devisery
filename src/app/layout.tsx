@@ -17,9 +17,12 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
+	metadataBase: new URL("https://www.devisery.com"),
 	title: "Devisery - Transform Your Business with Expert Solutions",
 	description:
 		"Professional consulting, development, and design services to help your business grow. Expert solutions for digital transformation and business optimization.",
+	alternates: { canonical: "/" },
+	openGraph: { type: "website", url: "/", siteName: "Devisery", images: [{ url: "/og-image.jpg", alt: "Devisery business consulting" }] },
 };
 
 export default function RootLayout({

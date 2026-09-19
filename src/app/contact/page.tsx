@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Script from "next/script";
 import { ContactForm } from "@/components/sections/ContactForm";
-import { Shield, Users, Award, Mail, MapPin } from "lucide-react";
+import { Shield, Route, Award, Mail, MapPin } from "lucide-react";
 
 export const metadata: Metadata = {
 	title: "Contact Us | Devisery",
@@ -93,8 +93,8 @@ export default function ContactPage() {
 									<p className="text-[11px] mt-1">Risk‑Free</p>
 								</div>
 								<div className="rounded-lg border bg-white/50 p-3">
-									<Users className="w-5 h-5 mx-auto text-blue-600" />
-									<p className="text-[11px] mt-1">100+ Clients</p>
+									<Route className="w-5 h-5 mx-auto text-blue-600" />
+									<p className="text-[11px] mt-1">Clear Roadmap</p>
 								</div>
 								<div className="rounded-lg border bg-white/50 p-3">
 									<Award className="w-5 h-5 mx-auto text-yellow-600" />

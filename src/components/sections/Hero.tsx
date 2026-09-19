@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Users, TrendingUp, Award } from "lucide-react";
+import { ArrowRight, Search, Route, Handshake } from "lucide-react";
 import { Button } from "../ui/Button";
 import { ContactForm } from "./ContactForm";
 import Image from "next/image";
@@ -59,23 +59,19 @@ export function HeroSection() {
 								</Button>
 							</div>
 
-							{/* Social Proof */}
+							{/* Engagement expectations */}
 							<div className="flex items-center gap-6 pt-4">
 								<div className="flex items-center gap-2">
-									<Users className="w-5 h-5 text-green-400" />
-									<span className="text-sm text-gray-300">100+ Clients</span>
+									<Search className="w-5 h-5 text-green-400" />
+									<span className="text-sm text-gray-300">Clear Diagnosis</span>
 								</div>
 								<div className="flex items-center gap-2">
-									<TrendingUp className="w-5 h-5 text-blue-400" />
-									<span className="text-sm text-gray-300">
-										95% Success Rate
-									</span>
+									<Route className="w-5 h-5 text-blue-400" />
+									<span className="text-sm text-gray-300">Practical Roadmap</span>
 								</div>
 								<div className="flex items-center gap-2">
-									<Award className="w-5 h-5 text-yellow-400" />
-									<span className="text-sm text-gray-300">
-										20+ Years Experience
-									</span>
+									<Handshake className="w-5 h-5 text-yellow-400" />
+									<span className="text-sm text-gray-300">Hands-On Support</span>
 								</div>
 							</div>
 						</div>

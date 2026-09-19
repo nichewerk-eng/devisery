@@ -13,9 +13,9 @@ export default function CallToAction() {
 						READY TO TRANSFORM YOUR BUSINESS?
 					</h2>
 					<p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-primary-foreground/80">
-						Join hundreds of successful companies who have partnered with
-						Devisery to achieve their goals. Let’s discuss how we can help you
-						grow.
+						Bring us the bottleneck holding your business back. We’ll clarify
+						the problem, identify practical next steps, and determine whether
+						we are the right partner to help execute them.
 					</p>
 					<div className=" mt-8 text-center">
 						<div className="flex flex-col sm:flex-row gap-4 justify-center">

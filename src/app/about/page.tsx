@@ -27,7 +27,6 @@ export default function AboutPage() {
 			"@type": "ContactPoint",
 			contactType: "sales",
 			email: "hello@devisery.com",
-			telephone: "+1-512-555-1234",
 		},
 	};
 
@@ -155,13 +154,13 @@ export default function AboutPage() {
 						</p>
 						<div className="mt-6 flex flex-wrap gap-4 text-sm text-muted-foreground">
 							<span className="px-3 py-1 rounded-full bg-primary/10 text-primary">
-								100+ Clients
+								Strategy + Execution
 							</span>
 							<span className="px-3 py-1 rounded-full bg-blue-100 text-blue-700">
-								95% Success Rate
+								Measurable Priorities
 							</span>
 							<span className="px-3 py-1 rounded-full bg-yellow-100 text-yellow-700">
-								20+ Years Experience
+								Hands-On Support
 							</span>
 						</div>
 					</div>
