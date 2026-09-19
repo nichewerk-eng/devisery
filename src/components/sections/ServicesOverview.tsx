@@ -172,15 +172,15 @@ export default function ServicesOverview() {
 
 			<div className="container mx-auto px-6 lg:px-8">
 				<div className="mx-auto max-w-3xl text-center mb-10">
-					<h2 className="text-sm font-semibold tracking-wider text-[#3095d2] mb-2">
+					<p className="text-sm font-semibold tracking-wider text-[#3095d2] mb-2">
 						Our Services, At a Glance
-					</h2>
-					<h1
+					</p>
+					<h2
 						className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-black uppercase"
 						style={{ fontFamily: "Oswald-PFG, sans-serif" }}
 					>
-						Think of this like your strategy deck
-					</h1>
+						A clear path from strategy to execution
+					</h2>
 				</div>
 
 				{/* Slide frame with perspective */}

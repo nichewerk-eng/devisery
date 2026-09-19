@@ -91,15 +91,15 @@ export default function ConsultantReasonsChart() {
 				<div
 					className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
 				>
-					<h2 className="text-base font-semibold leading-7 text-primary-variant">
+					<p className="text-base font-semibold leading-7 text-primary-variant">
 						Why Hire a Business Consultant?
-					</h2>
-					<h1
+					</p>
+					<h2
 						className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-black uppercase"
 						style={{ fontFamily: "Oswald-PFG, sans-serif" }}
 					>
 						WHY HIRE A BUSINESS CONSULTANT?
-					</h1>
+					</h2>
 					<p className="mt-6 text-lg leading-8 text-muted-foreground max-w-2xl mx-auto">
 						Austin businesses trust Devisery to deliver proven strategies that
 						drive growth, reduce costs, and provide clarity in decision-making.
