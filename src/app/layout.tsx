@@ -4,6 +4,8 @@ import "../styles/globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Analytics } from "@vercel/analytics/react";
+import LeadAttribution from "@/components/LeadAttribution";
+import { Suspense } from "react";
 
 const geistSans = localFont({
 	src: "./fonts/GeistVF.woff",
@@ -41,6 +43,7 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
 			>
+				<Suspense fallback={null}><LeadAttribution /></Suspense>
 				<Header />
 				{children}
 				<Footer />

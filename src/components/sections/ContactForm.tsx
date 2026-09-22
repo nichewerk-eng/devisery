@@ -14,6 +14,8 @@ import {
 import { Mail, Calendar, Shield } from "lucide-react";
 import { useState } from "react";
 import { Turnstile } from "@marsidev/react-turnstile";
+import { track } from "@vercel/analytics";
+import { getLeadAttribution } from "../../utils/leadAttribution";
 
 export function ContactForm() {
 	const [formData, setFormData] = useState({
@@ -45,6 +47,7 @@ export function ContactForm() {
 
 		setIsSubmitting(true);
 		try {
+			const leadSource = getLeadAttribution();
 			const res = await fetch("/api/contact", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
@@ -64,6 +67,10 @@ export function ContactForm() {
 					.catch(() => ({ message: "Failed to send." }));
 				throw new Error(data.message || "Failed to send.");
 			}
+			track("consultation_form_submitted", {
+				source: leadSource.utmSource,
+				campaign: leadSource.utmCampaign,
+			});
 			setStatus({
 				ok: true,
 				message: "Thanks! We\'ll get back within 24 hours.",
